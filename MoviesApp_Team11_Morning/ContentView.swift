@@ -1,24 +1,29 @@
-//
-//  ContentView.swift
-//  MoviesApp_Team11_Morning
-//
-//  Created by Ruba Arif on 03/07/1447 AH.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack(spacing: 16) {
+                Image(systemName: "film")
+                    .imageScale(.large)
+                    .font(.system(size: 48))
+                Text("Movies App")
+                    .font(.title).bold()
+                Text("Welcome!")
+                    .foregroundStyle(.secondary)
+
+                NavigationLink("Go to Details") {
+                    MovieDetailsView()
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+            .navigationTitle("Home")
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .preferredColorScheme(.dark)
 }
