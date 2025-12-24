@@ -10,9 +10,22 @@
 		D716B2F02EFA7ABB00814167 /* MoviesApp_Team11_Morning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp_Team11_Morning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D716B32C2EFBCEB500814167 /* Exceptions for "MoviesApp_Team11_Morning" folder in "MoviesApp_Team11_Morning" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Views/Home/MoviesCenterView.swift,
+			);
+			target = D716B2EF2EFA7ABB00814167 /* MoviesApp_Team11_Morning */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D716B2F22EFA7ABB00814167 /* MoviesApp_Team11_Morning */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D716B32C2EFBCEB500814167 /* Exceptions for "MoviesApp_Team11_Morning" folder in "MoviesApp_Team11_Morning" target */,
+			);
 			path = MoviesApp_Team11_Morning;
 			sourceTree = "<group>";
 		};

@@ -12,6 +12,7 @@ struct MoviesApp_Team11_MorningApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark)
         }
     }
 }
