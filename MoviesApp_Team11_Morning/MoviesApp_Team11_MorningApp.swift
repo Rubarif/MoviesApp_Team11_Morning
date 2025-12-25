@@ -11,7 +11,7 @@ import SwiftUI
 struct MoviesApp_Team11_MorningApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MoveisCenterView()
                 .preferredColorScheme(.dark)
         }
     }
