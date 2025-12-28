@@ -12,7 +12,6 @@ struct MovieDetailsView: View {
 
         ZStack(alignment: .top) {
 
-            // Background
             Color.black
                 .ignoresSafeArea()
 
@@ -39,10 +38,8 @@ struct MovieDetailsView: View {
                     .frame(height: 500)
                     .ignoresSafeArea(edges: .top)
 
-                    // Movie Title
                     VStack {
                         Spacer()
-
                         Text("Shawshank")
                             .font(.largeTitle)
                             .fontWeight(.bold)
@@ -53,7 +50,6 @@ struct MovieDetailsView: View {
                     }
                     .frame(height: 500)
 
-                    // Top Buttons
                     HStack {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.yellow)
@@ -81,166 +77,150 @@ struct MovieDetailsView: View {
                     .padding(.top, 50)
                 }
 
-                // MARK: - Content Section
+                // MARK: - Content
                 ScrollView {
-
                     VStack(alignment: .leading, spacing: 24) {
 
-                        // Duration / Language
-                        HStack {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("Duration")
-                                    .foregroundColor(.gray)
-                                    .font(.caption)
+                        infoRow(left: ("Duration","2 hours 22 mins"),
+                                right: ("Language","English"))
 
-                                Text("2 hours 22 mins")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                            }
+                        infoRow(left: ("Genre","Drama"),
+                                right: ("Age","+15"))
 
-                            Spacer()
+                        storySection
+                        imdbSection
+                        directorSection
+                        starsSection
 
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("Language")
-                                    .foregroundColor(.gray)
-                                    .font(.caption)
-
-                                Text("English")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                            }
-                        }
-
-                        // Genre / Age
-                        HStack {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("Genre")
-                                    .foregroundColor(.gray)
-                                    .font(.caption)
-
-                                Text("Drama")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                            }
-
-                            Spacer()
-
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("Age")
-                                    .foregroundColor(.gray)
-                                    .font(.caption)
-
-                                Text("+15")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                            }
-                        }
-
-                        // Story
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Story")
-                                .font(.headline)
-                                .foregroundColor(.white)
-
-                            Text("""
-                            In 1947, Andy Dufresne, a banker in Maine, is convicted of the murders of his wife and her lover.
-                            He is sentenced to life imprisonment at Shawshank State Penitentiary, where he befriends Ellis Boyd
-                            “Red” Redding and finds ways to live with hope inside prison walls.
-                            """)
-                            .foregroundColor(.gray)
-                            .font(.body)
-                            .lineSpacing(4)
-                        }
-
-                        // IMDb Rating
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("IMDb Rating")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-
-                            Text("9.3 / 10")
-                                .font(.body)
-                                .foregroundColor(.gray)
-                        }
-
-                        // Director
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Director")
-                                .font(.headline)
-                                .foregroundColor(.white)
-
-                            VStack(alignment: .leading, spacing: 8) {
-                                Image("frank")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 60, height: 60)
-                                    .clipShape(Circle())
-
-                                Text("Frank Darabont")
-                                    .foregroundColor(.white)
-                                    .font(.body)
-                            }
-                        }
-
-                        // Stars
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text("Stars")
-                                .font(.headline)
-                                .foregroundColor(.white)
-
-                            HStack(spacing: 20) {
-                                starItem(image: "tim", name: "Tim Robbins")
-                                starItem(image: "morgan", name: "Morgan Freeman")
-                                starItem(image: "bob", name: "Bob Gunton")
-                            }
-                        }
-
-                        // Rating & Reviews
-                        VStack(alignment: .leading, spacing: 19) {
-
-                            Text("Rating & Reviews")
-                                .font(.headline)
-                                .foregroundColor(.white)
-
-                            Text("4.8")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-
-                            Text("out of 5")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 16) {
-
-                                    ReviewCard(
-                                        imageName: "user_review",
-                                        name: "Afnan Abdullah",
-                                        stars: 5,
-                                        text: "This is an engaging simple, good-hearted film..."
-                                    )
-
-                                    ReviewCard(
-                                        imageName: "user_review2",
-                                        name: "Sarah Ahmed",
-                                        stars: 4,
-                                        text: "A tough, compassionate story about hope and friendship."
-                                    )
-                                }
-                                .padding(.vertical, 8)
-                            }
-                        }
+                        // MARK: - Rating & Reviews (⭐️ المطلوب)
+                        ratingAndReviews
                     }
                     .padding()
                 }
-                
             }
         }
     }
 
-    // MARK: - Helper
+    // MARK: - Sections
+
+    private var storySection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Story")
+                .foregroundColor(.white)
+                .font(.headline)
+
+            Text("""
+            In 1947, Andy Dufresne, a banker in Maine, is convicted of the murders of his wife and her lover.
+            He is sentenced to life imprisonment at Shawshank State Penitentiary, where he befriends Ellis Boyd
+            “Red” Redding and finds ways to live with hope inside prison walls.
+            """)
+            .foregroundColor(.gray)
+            .lineSpacing(4)
+        }
+    }
+
+    private var imdbSection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("IMDb Rating")
+                .font(.headline)
+                .foregroundColor(.white)
+            Text("9.3 / 10")
+                .foregroundColor(.gray)
+        }
+    }
+
+    private var directorSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Director")
+                .foregroundColor(.white)
+                .font(.headline)
+
+            VStack(alignment: .leading, spacing: 6) {
+                Image("frank")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+
+                Text("Frank Darabont")
+                    .foregroundColor(.white)
+            }
+        }
+    }
+
+    private var starsSection: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Stars")
+                .foregroundColor(.white)
+                .font(.headline)
+
+            HStack(spacing: 20) {
+                starItem(image: "tim", name: "Tim Robbins")
+                starItem(image: "morgan", name: "Morgan Freeman")
+                starItem(image: "bob", name: "Bob Gunton")
+            }
+        }
+    }
+
+    private var ratingAndReviews: some View {
+        VStack(alignment: .leading, spacing: 24) {
+
+            Text("Rating & Reviews")
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("4.8")
+                    .font(.system(size: 44, weight: .bold))
+                    .foregroundColor(.white)
+
+                Text("out of 5")
+                    .foregroundColor(.gray)
+            }
+
+            // ⭐️ Scroll أفقي + كرت كبير
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+
+                    ReviewCard(
+                        imageName: "user_review",
+                        name: "Afnan Abdullah",
+                        stars: 5,
+                        text: "This is an engagingly simple, good-hearted film, with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature.",
+                        date: "Tuesday"
+                    )
+
+                    ReviewCard(
+                        imageName: "user_review2",
+                        name: "Sarah Ahmed",
+                        stars: 4,
+                        text: "A tough, compassionate story about hope and friendship.",
+                        date: "Today"
+                    )
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+
+    // MARK: - Helpers
+
+    private func infoRow(left: (String,String), right: (String,String)) -> some View {
+        HStack {
+            infoItem(title: left.0, value: left.1)
+            Spacer()
+            infoItem(title: right.0, value: right.1)
+        }
+    }
+
+    private func infoItem(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(title).foregroundColor(.gray).font(.caption)
+            Text(value).foregroundColor(.white).font(.headline)
+        }
+    }
+
     private func starItem(image: String, name: String) -> some View {
         VStack(spacing: 6) {
             Image(image)
@@ -248,13 +228,13 @@ struct MovieDetailsView: View {
                 .scaledToFill()
                 .frame(width: 60, height: 60)
                 .clipShape(Circle())
-
             Text(name)
                 .foregroundColor(.white)
                 .font(.caption)
         }
     }
 }
+
 
 // Preview
 struct MovieDetailsView_Previews: PreviewProvider {
