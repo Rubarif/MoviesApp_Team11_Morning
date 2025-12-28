@@ -12,3 +12,4 @@ struct Movie: Identifiable {
     let rating: Double
     let category: String
 }
+//
