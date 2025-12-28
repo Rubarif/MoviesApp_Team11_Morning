@@ -26,21 +26,20 @@ struct ReviewCard: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text(name)
-                        .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(.white)
+                        .font(.headline)
 
                     HStack(spacing: 3) {
                         ForEach(0..<stars, id: \.self) { _ in
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellow)
-                                .font(.system(size: 13))
+                                .font(.caption)
                         }
                     }
                 }
             }
 
             Text(text)
-                .font(.system(size: 18))
                 .foregroundColor(.white.opacity(0.95))
                 .lineSpacing(6)
                 .fixedSize(horizontal: false, vertical: true)
@@ -53,17 +52,13 @@ struct ReviewCard: View {
             }
         }
         .padding(26)
-        .frame(
-            width: UIScreen.main.bounds.width - 40,
-            alignment: .leading
-        )
+        .frame(width: UIScreen.main.bounds.width - 40, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 24)
                 .fill(Color.white.opacity(0.08))
         )
     }
 }
-
 
 
 
