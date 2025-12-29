@@ -9,89 +9,107 @@ import SwiftUI
 
 struct MovieDetailsView: View {
 
-    @State private var showAddReview = false
+    private let heroHeight: CGFloat = 420
 
     var body: some View {
         NavigationStack {
-            ZStack {
+            ZStack(alignment: .top) {
+
                 Color.black
                     .ignoresSafeArea()
 
-                ScrollView {
-                    VStack(spacing: 0) {
+                //  Hero Image (خلف النوتش)
+                ZStack(alignment: .top) {
 
-                      
-                        ZStack(alignment: .top) {
+                    Image("Shawshanks")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: heroHeight)
+                        .clipped()
+                        .ignoresSafeArea(.container, edges: .top)
 
-                            Image("Shawshanks")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: 420)
-                                .clipped()
-                                .ignoresSafeArea(edges: .top)
+                    LinearGradient(
+                        colors: [
+                            Color.black.opacity(0.0),
+                            Color.black.opacity(0.75)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .frame(height: heroHeight)
 
-                            LinearGradient(
-                                colors: [
-                                    Color.black.opacity(0.0),
-                                    Color.black.opacity(0.7)
-                                ],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                            .frame(height: 420)
+                    // Top Buttons
+                    HStack {
+                        Button {} label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(.yellow)
+                                .padding()
+                                .background(Color.black.opacity(0.6))
+                                .clipShape(Circle())
+                        }
 
-                
-                            HStack {
-                                Image(systemName: "chevron.left")
+                        Spacer()
+
+                        HStack(spacing: 12) {
+                            Button {} label: {
+                                Image(systemName: "square.and.arrow.up")
                                     .foregroundColor(.yellow)
                                     .padding()
                                     .background(Color.black.opacity(0.6))
                                     .clipShape(Circle())
-
-                                Spacer()
-
-                                HStack(spacing: 12) {
-                                    Image(systemName: "square.and.arrow.up")
-                                        .foregroundColor(.yellow)
-                                        .padding()
-                                        .background(Color.black.opacity(0.6))
-                                        .clipShape(Circle())
-
-                                    Image(systemName: "bookmark")
-                                        .foregroundColor(.yellow)
-                                        .padding()
-                                        .background(Color.black.opacity(0.6))
-                                        .clipShape(Circle())
-                                }
                             }
-                            .padding(.horizontal)
-                            .padding(.top, 50)
 
-                         
-                            VStack {
-                                Spacer()
-                                Text("Shawshank")
-                                    .font(.largeTitle)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.horizontal)
-                                    .padding(.bottom, 20)
+                            Button {} label: {
+                                Image(systemName: "bookmark")
+                                    .foregroundColor(.yellow)
+                                    .padding()
+                                    .background(Color.black.opacity(0.6))
+                                    .clipShape(Circle())
                             }
                         }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 50)
+                }
 
-                  
+                // MARK: - Scroll Content
+                ScrollView {
+                    VStack(spacing: 0) {
+
+                        // مساحة الصورة
+                        Color.clear
+                            .frame(height: heroHeight)
+
+                        // كل المحتوى بخلفية سوداء
                         VStack(alignment: .leading, spacing: 24) {
 
+                           
+                            Text("Shawshank")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+
+                            // Duration / Language
                             HStack {
-                                Text("Drama")
-                                    .foregroundColor(.gray)
-                                Spacer()
-                                Text("+15")
-                                    .foregroundColor(.gray)
+                                infoItem(title: "Duration", value: "2 hours 22 mins")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                infoItem(title: "Language", value: "English")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                             }
 
-                        
+
+                            // Genre / Age
+                            HStack {
+                                infoItem(title: "Genre", value: "Drama")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                infoItem(title: "Age", value: "+15")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+
+
+                            // Story
                             VStack(alignment: .leading, spacing: 12) {
                                 Text("Story")
                                     .font(.headline)
@@ -110,7 +128,6 @@ struct MovieDetailsView: View {
                                 Text("IMDb Rating")
                                     .font(.headline)
                                     .foregroundColor(.white)
-
                                 Text("9.3 / 10")
                                     .foregroundColor(.gray)
                             }
@@ -138,7 +155,7 @@ struct MovieDetailsView: View {
 
                             Divider().background(Color.gray.opacity(0.3))
 
-                            // Stars
+                             
                             VStack(alignment: .leading, spacing: 12) {
                                 Text("Stars")
                                     .font(.headline)
@@ -153,9 +170,8 @@ struct MovieDetailsView: View {
 
                             Divider().background(Color.gray.opacity(0.3))
 
-                            // MARK: - Rating & Reviews
+                            // Rating & Reviews
                             VStack(alignment: .leading, spacing: 24) {
-
                                 Text("Rating & Reviews")
                                     .font(.headline)
                                     .foregroundColor(.white)
@@ -164,14 +180,12 @@ struct MovieDetailsView: View {
                                     Text("4.8")
                                         .font(.system(size: 42, weight: .bold))
                                         .foregroundColor(.white)
-
                                     Text("out of 5")
                                         .foregroundColor(.gray)
                                 }
 
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     HStack(spacing: 20) {
-
                                         ReviewCard(
                                             imageName: "user_review",
                                             name: "Afnan Abdullah",
@@ -179,7 +193,6 @@ struct MovieDetailsView: View {
                                             text: "This is an engagingly simple, good-hearted film, with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature.",
                                             date: "Tuesday"
                                         )
-                                        .id("review-1")
 
                                         ReviewCard(
                                             imageName: "user_review2",
@@ -188,15 +201,12 @@ struct MovieDetailsView: View {
                                             text: "A tough, compassionate story about hope and friendship.",
                                             date: "Today"
                                         )
-                                        .id("review-2")
                                     }
                                 }
                             }
 
-                           
-                            Button {
-                                showAddReview = true
-                            } label: {
+                            // Write Review Button
+                            NavigationLink(destination: AddReviewView()) {
                                 HStack {
                                     Image(systemName: "square.and.pencil")
                                     Text("Write a review")
@@ -210,19 +220,27 @@ struct MovieDetailsView: View {
                                         .stroke(Color.yellow, lineWidth: 1.5)
                                 )
                             }
-                            .padding(.top, 16)
                             .padding(.bottom, 40)
                         }
                         .padding()
+                        .background(Color.black) // مهم: يمنع انعكاس الصورة
                     }
                 }
             }
-            .navigationDestination(isPresented: $showAddReview) {
-                AddReviewView()
-            }
         }
     }
- 
+
+    // MARK: - Helpers
+    private func infoItem(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.gray)
+            Text(value)
+                .foregroundColor(.white)
+        }
+    }
+
     private func starItem(image: String, name: String) -> some View {
         VStack(spacing: 6) {
             Image(image)
@@ -237,6 +255,7 @@ struct MovieDetailsView: View {
         }
     }
 }
+
 
 
 // Preview
