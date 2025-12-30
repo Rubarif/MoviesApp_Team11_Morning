@@ -78,17 +78,20 @@ struct AddReviewView: View {
             .navigationTitle("Write a review")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+      /*          ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         dismiss()
                     }) {
-                        HStack(spacing: 4) {
+                         HStack(spacing: 4) {
                             Image(systemName: "chevron.left")
                             Text("Back")
                         }
                         .foregroundColor(.yellow)
+                         
                     }
+                        
                 }
+       */
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

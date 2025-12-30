@@ -12,53 +12,63 @@ struct ReviewCard: View {
     let name: String
     let stars: Int
     let text: String
+    let date: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 20) {
 
-            // User + stars
-            HStack(spacing: 12) {
+            HStack(spacing: 14) {
                 Image(imageName)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 44, height: 44)
+                    .frame(width: 50, height: 50)
                     .clipShape(Circle())
 
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text(name)
-                        .font(.system(size: 15, weight: .semibold))
                         .foregroundColor(.white)
+                        .font(.headline)
 
-                    HStack(spacing: 2) {
+                    HStack(spacing: 3) {
                         ForEach(0..<stars, id: \.self) { _ in
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellow)
-                                .font(.system(size: 12))
+                                .font(.caption)
                         }
                     }
                 }
             }
 
-            // Review text
             Text(text)
-                .font(.system(size: 14))
-                .foregroundColor(.gray.opacity(0.9))
-                .lineSpacing(4)
-                .lineLimit(nil)   // مهم
+                .foregroundColor(.white.opacity(0.95))
+                .lineSpacing(6)
+                .fixedSize(horizontal: false, vertical: true)
+
+            HStack {
+                Spacer()
+                Text(date)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
         }
-        .padding(18)
-        .frame(width: 300)      // أعرض
-        .background(Color.white.opacity(0.06))
-        .cornerRadius(18)
+        .padding(26)
+        .frame(width: UIScreen.main.bounds.width - 40, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 24)
+                .fill(Color.white.opacity(0.08))
+        )
     }
 }
+
+
 
 #Preview {
     ReviewCard(
         imageName: "user_review",
         name: "Afnan Abdullah",
         stars: 5,
-        text: "This is an engaging simple, good-hearted film with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature."
+        text: "This is an engaging simple, good-hearted film with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature.",
+        date: "Tuesday"
     )
     .background(Color.black)
 }
