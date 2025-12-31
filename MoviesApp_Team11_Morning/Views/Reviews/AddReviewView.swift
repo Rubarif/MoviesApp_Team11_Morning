@@ -78,7 +78,13 @@ struct AddReviewView: View {
             .navigationTitle("Write a review")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-      /*          ToolbarItem(placement: .navigationBarLeading) {
+                
+                
+      /*
+       
+       
+       زر الرجوع السابق
+       ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         dismiss()
                     }) {
@@ -92,6 +98,8 @@ struct AddReviewView: View {
                         
                 }
        */
+                
+                
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

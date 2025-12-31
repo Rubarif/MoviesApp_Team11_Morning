@@ -5,6 +5,7 @@
 //  Created by Ruba Arif on 03/07/1447 AH.
 //
 
+
 import SwiftUI
 
 struct MovieDetailsView: View {
@@ -82,8 +83,6 @@ struct MovieDetailsView: View {
 
                         // كل المحتوى بخلفية سوداء
                         VStack(alignment: .leading, spacing: 24) {
-
-                           
                             Text("Shawshank")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
@@ -98,7 +97,6 @@ struct MovieDetailsView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
 
-
                             // Genre / Age
                             HStack {
                                 infoItem(title: "Genre", value: "Drama")
@@ -107,7 +105,6 @@ struct MovieDetailsView: View {
                                 infoItem(title: "Age", value: "+15")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
-
 
                             // Story
                             VStack(alignment: .leading, spacing: 12) {
@@ -155,7 +152,7 @@ struct MovieDetailsView: View {
 
                             Divider().background(Color.gray.opacity(0.3))
 
-                             
+                            // Stars
                             VStack(alignment: .leading, spacing: 12) {
                                 Text("Stars")
                                     .font(.headline)
@@ -184,25 +181,7 @@ struct MovieDetailsView: View {
                                         .foregroundColor(.gray)
                                 }
 
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 20) {
-                                        ReviewCard(
-                                            imageName: "user_review",
-                                            name: "Afnan Abdullah",
-                                            stars: 5,
-                                            text: "This is an engagingly simple, good-hearted film, with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature.",
-                                            date: "Tuesday"
-                                        )
-
-                                        ReviewCard(
-                                            imageName: "user_review2",
-                                            name: "Sarah Ahmed",
-                                            stars: 4,
-                                            text: "A tough, compassionate story about hope and friendship.",
-                                            date: "Today"
-                                        )
-                                    }
-                                }
+                                ReviewsHorizontalList()
                             }
 
                             // Write Review Button
@@ -223,7 +202,7 @@ struct MovieDetailsView: View {
                             .padding(.bottom, 40)
                         }
                         .padding()
-                        .background(Color.black) // مهم: يمنع انعكاس الصورة
+                        .background(Color.black)
                     }
                 }
             }
@@ -255,8 +234,6 @@ struct MovieDetailsView: View {
         }
     }
 }
-
-
 
 // Preview
 struct MovieDetailsView_Previews: PreviewProvider {
