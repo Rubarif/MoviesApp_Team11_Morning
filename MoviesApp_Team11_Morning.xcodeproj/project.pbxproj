@@ -10,9 +10,34 @@
 		D716B2F02EFA7ABB00814167 /* MoviesApp_Team11_Morning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp_Team11_Morning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D763EA782F0654AA00C8C255 /* Exceptions for "MoviesApp_Team11_Morning" folder in "MoviesApp_Team11_Morning" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"MoviesApp-Team11-Morning-Info.plist",
+				Secrets.xcconfig,
+			);
+			target = D716B2EF2EFA7ABB00814167 /* MoviesApp_Team11_Morning */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		D763EA792F0654AA00C8C255 /* Exceptions for "MoviesApp_Team11_Morning" folder in "Compile Sources" phase from "MoviesApp_Team11_Morning" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = D716B2EC2EFA7ABB00814167 /* Sources */;
+			membershipExceptions = (
+				Secrets.xcconfig,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D716B2F22EFA7ABB00814167 /* MoviesApp_Team11_Morning */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D763EA782F0654AA00C8C255 /* Exceptions for "MoviesApp_Team11_Morning" folder in "MoviesApp_Team11_Morning" target */,
+				D763EA792F0654AA00C8C255 /* Exceptions for "MoviesApp_Team11_Morning" folder in "Compile Sources" phase from "MoviesApp_Team11_Morning" target */,
+			);
 			path = MoviesApp_Team11_Morning;
 			sourceTree = "<group>";
 		};
@@ -253,6 +278,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MoviesApp-Team11-Morning-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +311,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MoviesApp-Team11-Morning-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
